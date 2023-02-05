@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:musicplayer/src/models/models.dart';
 import 'package:musicplayer/src/screens/screens.dart';
 import 'package:musicplayer/src/theme/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AudioPlayer())
+      ],
+      child: const MyApp()
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
